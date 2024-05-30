@@ -17,13 +17,21 @@
         "concurrently": "^8.2.0"
     },
     "dependencies": {
+        "@apollo/client": "^3.10.4",
+        "@chakra-ui/react": "^2.8.2",
+        "@emotion/react": "^11.11.4",
+        "@emotion/styled": "^11.11.5",
         "axios": "^1.7.2",
         "bcrypt": "^5.1.1",
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
+        "framer-motion": "^11.2.9",
+        "graphql": "^16.8.1",
+        "jwt-decode": "^4.0.0",
         "mongoose": "^8.4.0",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^6.23.1"
     }
 }
