@@ -18,8 +18,15 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
-      example: {
-      // user it applies to
+      userId: {
+        // this should hopefully run by ids for users in User schema
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: {
+          model: 'User',
+          key: 'id'
+        }
+        // TO DO: default: [user from current session]
       },
     },
     // set this to use virtual below
