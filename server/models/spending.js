@@ -15,11 +15,6 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
-      spendingId: {
-        //Not entirely sure if the type is correct here for model ID
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId()
-      },
     },
     // set this to use virtual below
     {
