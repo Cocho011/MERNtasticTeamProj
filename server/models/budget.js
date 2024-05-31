@@ -6,9 +6,11 @@ const budgetSchema = new Schema(
         type: Number,
         required: true,
       },
-      date: {
-        type: String,
+      weekDate: {
+        type: Date,
         required: true,
+        default: Date.now,
+        // TO DO: add date formatting
       },
     },
     // set this to use virtual below

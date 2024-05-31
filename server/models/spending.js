@@ -7,8 +7,10 @@ const spendingSchema = new Schema(
         required: true,
       },
       timeSubmitted: {
-        type: String,
+        type: Date,
+        default: Date.now,
         required: true,
+        // TO DO: add date formatting
       },
       purchaseDescription: {
         type: String,
