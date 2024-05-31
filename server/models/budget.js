@@ -12,11 +12,11 @@ const budgetSchema = new Schema(
       },
     },
     // set this to use virtual below
-    {
-      toJSON: {
-        virtuals: true,
-      },
-    }
+    // {
+    //   toJSON: {
+    //     virtuals: true,
+    //   },
+    // }
   );
 
   module.exports = budgetSchema;
