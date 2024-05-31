@@ -8,6 +8,7 @@ const spendingSchema = new Schema(
       },
       timeSubmitted: {
         type: String,
+        required: true,
       },
       purchaseDescription: {
         type: String,
