@@ -18,6 +18,9 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
+      example: {
+      // user it applies to
+      },
     },
     // set this to use virtual below
     // {
@@ -27,4 +30,6 @@ const spendingSchema = new Schema(
     // }
   );
 
-  module.exports = spendingSchema;
+const Spending = model('Spending', thoughtSchema);
+
+module.exports = Spending;
