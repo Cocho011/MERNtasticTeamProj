@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const budgetSchema = require('./budget')
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
@@ -18,6 +19,7 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
+      budget: [budgetSchema],
     },
     // set this to use virtual below
     {
@@ -41,4 +43,8 @@ userSchema.pre('save', async function (next) {
   userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
   };
+
+  const User = model('user', userSchema)
+
+  module.exports = User
   
