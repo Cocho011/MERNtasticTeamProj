@@ -7,8 +7,10 @@ const spendingSchema = new Schema(
         required: true,
       },
       timeSubmitted: {
-        type: String,
+        type: Date,
+        default: Date.now,
         required: true,
+        // TO DO: add date formatting
       },
       purchaseDescription: {
         type: String,
@@ -16,13 +18,25 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
+      userId: {
+        // this should hopefully run by ids for users in User schema
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: {
+          model: 'User',
+          key: 'id'
+        }
+        // TO DO: default: [user from current session]
+      },
     },
     // set this to use virtual below
-    {
-      toJSON: {
-        virtuals: true,
-      },
-    }
+    // {
+    //   toJSON: {
+    //     virtuals: true,
+    //   },
+    // }
   );
 
-  module.exports = spendingSchema;
+const Spending = model('Spending', thoughtSchema);
+
+module.exports = Spending;
