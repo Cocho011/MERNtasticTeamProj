@@ -21,9 +21,9 @@ export const Budget = {
       totalBudget: "500",
       spent: "125",
       spending: [
-        { "05/14", 25, "snacks" },
-        { "05/15", 50, "groceries" },
-        { "05/16", 50, "groceries" }
+        { date:"05/14", cost:25, item:"snacks" },
+        { date:"05/15", cost:50, item:"groceries" },
+        { date:"05/16", cost:50, item:"groceries" }
       ]
     },
 
@@ -31,9 +31,9 @@ export const Budget = {
       totalBudget: "500",
       spent: "695",
       spending: [
-        { "05/07", 25, "snacks" },
-        { "05/08", 90, "groceries" },
-        { "05/09", 50, "movies" }
+        { date:"05/07", cost:25, item:"snacks" },
+        { date:"05/08", cost:90, item:"groceries" },
+        { date:"05/09", cost:50, item:"movies" }
       ]
     },
 
@@ -41,9 +41,9 @@ export const Budget = {
       totalBudget: "500",
       spent: "90",
       spending: [
-        { "04/30", 25, "snacks" },
-        { "05/01", 5, "swimming" },
-        { "05/02", 30, "takeout" }
+        { date:"04/30", cost:25, item:"snacks" },
+        { date:"05/01", cost:5, item:"swimming" },
+        { date:"05/02", cost:30, item:"takeout" }
       ]
     },
 
@@ -51,9 +51,9 @@ export const Budget = {
       totalBudget: "500",
       spent: "700",
       spending: [
-        { "04/23", 11, "coffee" },
-        { "04/24", 45, "donuts" },
-        { "04/25", 20, "water" }
+        { date:"04/23", cost:11, item:"coffee" },
+        { date:"04/24", cost:45, item:"donuts" },
+        { date: "04/25", cost:20, item:"water" }
       ]
     },
 
