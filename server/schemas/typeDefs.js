@@ -31,10 +31,12 @@ const typeDefs = `
         user: User
     }
 
-    # commented out query until finished
-    # type Query {
-        # stuff goes here. referencing 21 mern -> 05 typedefs-resolvers
-    # }
+    type Query {
+        budgets: [Budget]
+        spendings: [Spending]
+        users: [User]
+        users(id: ID!): User
+    }
 
 }'
 `;
