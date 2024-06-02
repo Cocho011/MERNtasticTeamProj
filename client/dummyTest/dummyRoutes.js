@@ -7,7 +7,8 @@ export const GetWeekData = (req) => {
 };
 
 export const addSpending = (req) => {
-  return Budget[req.userID][req.date].spending.push(req.item);
+  Budget[req.userID][req.date].spending.push(req.spendingItem);
+  console.log(Budget[req.userID][req.date].spending);
 };
  
 export const getUserHistory = (req) => { 
