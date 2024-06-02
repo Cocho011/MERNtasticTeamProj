@@ -18,16 +18,13 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
-      userId: {
-        // this should hopefully run by ids for users in User schema
+    users: [
+      {
         type: Schema.Types.ObjectId,
-        required: true,
-        ref: {
-          model: 'User',
-          key: 'id'
-        }
-        // TO DO: default: [user from current session]
-      },
+        ref: 'User'
+      }
+      // TO DO: default: [user from current session]
+    ],
     },
     // set this to use virtual below
     // {
@@ -40,3 +37,17 @@ const spendingSchema = new Schema(
 const Spending = model('Spending', thoughtSchema);
 
 module.exports = Spending;
+
+
+
+// OLD ATTEMPT
+// userId: {
+//   // this should hopefully run by ids for users in User schema
+//   type: Schema.Types.ObjectId,
+//     required: true,
+//       ref: {
+//     model: 'User',
+//       key: 'id'
+//   }
+//   // TO DO: default: [user from current session]
+// },
