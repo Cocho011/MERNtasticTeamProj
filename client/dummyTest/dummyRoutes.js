@@ -8,12 +8,28 @@ export const GetWeekData = (req) => {
 
 export const addSpending = (req) => {
   return Budget[req.userID][req.date].spending.push(req.item);
- };
+};
+ 
+export const getUserHistory = (req) => { 
+return Budget[req.userID];
+};
+
+export const getDate = () => {
+  return {
+    month: "05",
+    day: "13",
+    year: "2024"
+  }
+};
 
 const test = function () {
-  addSpending({ userID: dummyUserID, date: "05/13/2024", item: { date:"05/16", cost:25, item:"lays" }});
-  console.log(GetWeekData({ userID: dummyUserID, date: "05/13/2024"}));
+
+  // addSpending({ userID: dummyUserID, date: "05/13/2024", item: { date:"05/16", cost:25, item:"lays" }});
+  // console.log(GetWeekData({ userID: dummyUserID, date: "05/13/2024"}));
+  console.log (getUserHistory({ userID: dummyUserID }));
 };
 
 test();
+
+
 
