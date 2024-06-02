@@ -14,11 +14,12 @@ export const getUserHistory = (req) => {
 return Budget[req.userID];
 };
 
-export const getDate = () => {
+export const getCurrent = () => {
   return {
     month: "05",
-    day: "13",
-    year: "2024"
+    day: "17",
+    year: "2024",
+    week: "05/13/2024",
   }
 };
 
@@ -29,7 +30,7 @@ const test = function () {
   console.log (getUserHistory({ userID: dummyUserID }));
 };
 
-test();
+// test();
 
 
 
