@@ -17,23 +17,28 @@ const app = express();
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
-  await server.start();
+  try {
+    await server.start();
 
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(express.json());
 
-  app.use('/graphql', expressMiddleware(server));
+    app.use('/graphql', expressMiddleware(server));
 
-  db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    db.once('open', () => {
+      app.listen(PORT, () => {
+        console.log(`API server running on port ${PORT}!`);
+        console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+      });
     });
-  });
+  } catch (error) {
+    console.error('Error starting Apollo Server:', error);
+  }
 };
 
 // Call the async function to start the server
 startApolloServer();
+
 
 
 
