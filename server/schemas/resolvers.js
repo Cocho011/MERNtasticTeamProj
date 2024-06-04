@@ -1,10 +1,12 @@
-const { User } = require('../models');
+const { User, Budget, Spending } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
-    // Query: {
-    // referencing 21 mern -> 05 typedefs-resolvers
-    // }
+    Query: {
+    users: async () => {
+        return await User.find({});
+    }
+    }
 };
 
 module.exports = resolvers;
