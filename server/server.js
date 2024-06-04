@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./config/connection');
+const connectDB = require('./config/connection');
 const path = require('path');
 
 const PORT = 3001;
@@ -14,9 +14,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
 
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}!`);
+    });
+  })
+  .catch((err) => console.error('MongoDB connection error:', err));
 
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}!`);
-  });
-});
