@@ -23,6 +23,19 @@ export const getCurrent = () => {
     week: "05/13/2024",
   }
 };
+export const getNextWeek = () => {
+  return {
+    week: "05/20/2024"
+  }
+
+}
+
+export const addNextWeekBudget = (req) => { 
+  Budget[req.userID][req.date]= Budget[req.userID][req.date] || {};
+  Budget[req.userID][req.date].totalBudget = req.totalBudget;
+  console.log(Budget[req.userID]);
+
+};
 
 const test = function () {
 
