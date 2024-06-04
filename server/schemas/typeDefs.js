@@ -38,7 +38,6 @@ const typeDefs = `
         users(id: ID!): User
     }
 
-}'
 `;
 
 module.exports = typeDefs;

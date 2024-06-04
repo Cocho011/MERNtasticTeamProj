@@ -1,5 +1,6 @@
 const { User, Budget, Spending } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+// TO DO: ADD AUTH
+// const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
