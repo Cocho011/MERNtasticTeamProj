@@ -7,14 +7,14 @@ const typeDefs = `
         _id: ID!
         amount: Int!
         # weekDate: Date
-        users: [User]
+        # users: [User]
     }
 
     type Spending {
         amount: Int!
         # timeSubmitted: Date
         purchaseDescription: String!
-        users: [User]
+        # users: [User]
     }
 
     type User {
@@ -24,17 +24,17 @@ const typeDefs = `
         password: String!
     }
 
-    type Auth {
-        token: ID!
-        user: User
-    }
+    # type Auth {
+    #      token: ID!
+    #     user: User
+    # }
 
     type Query {
         budgets: [Budget]
         spendings: [Spending]
         # referencing 21-mern -> 07-query-arguments:
-        users: [User]
-        users(id: ID!): User
+        # users: [User]
+        # users(id: ID!): User
     }
 
 `;
