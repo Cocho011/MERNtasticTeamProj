@@ -31,7 +31,10 @@ const StyledCurrentWeek = styled.div`
     > * {flex: 1;}
   }
   .spendingHistoryContainer {
-    
+    .spendingHistoryTitle {
+      text-align: center;
+    }
+
   }
   `
 
@@ -58,7 +61,7 @@ function App() {
             weekData={current ? userHistory[current.week] : null}
           />
           <div className="spendingHistoryContainer">
-            <h3>Spending History</h3>
+            <h3 className="spendingHistoryTitle">Spending History</h3>
             <SpendingHistory
               weekSpending={current ? userHistory[current.week].spending : null}
             />

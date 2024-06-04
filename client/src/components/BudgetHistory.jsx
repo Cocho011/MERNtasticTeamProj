@@ -1,12 +1,28 @@
+import styled from "@emotion/styled";
 import { useState } from "react";
 import SpendingHistory from "./SpendingHistory.jsx";
 
+const StyledBudgetHistory = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .weekBudget {
+    .weekBudgetContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 30px;
+    }
+  }
+`;
+
 function BudgetHistory({ userHistory }) {
   const [viewAll, setViewAll] = useState(false);
-  const displayedHistory = viewAll ? userHistory : userHistory.slice(0,3);
+  const displayedHistory = viewAll ? userHistory : userHistory.slice(0, 3);
 
   return (
-    <div className="budgetHistory">
+    <StyledBudgetHistory className="budgetHistory">
       <h2>Budget History</h2>
       <div className="budgetHistoryContainer">
         {displayedHistory.map((week, index) => (
@@ -14,8 +30,14 @@ function BudgetHistory({ userHistory }) {
         ))}
         {/* <WeekBudget weekData={userHistory[0][1]} week={userHistory[0][0]} /> */}
       </div>
-      <p className="viewDropDown" onClick={() => setViewAll(true)} hidden={viewAll}>View All</p>
-    </div>
+      <p
+        className="viewDropDown"
+        onClick={() => setViewAll(true)}
+        hidden={viewAll}
+      >
+        View All
+      </p>
+    </StyledBudgetHistory>
   );
 }
 

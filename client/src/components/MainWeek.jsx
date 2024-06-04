@@ -3,7 +3,17 @@ import styled from "@emotion/styled";
 const StyledMainWeek = styled.div`
   display: flex;
   flex-direction: row;
+  .currentBudget {
+    width:100%;
+    
   .currentBudgetRow {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    > * {flex: 1}
+
+  }
   }
 `;
 
@@ -34,7 +44,7 @@ function CurrentBudget({ totalBudget, spent }) {
 function CurrentBudgetRow({ amount, title }) {
   return (
     <div className="currentBudgetRow">
-      <p className="amount">{amount}</p>
+      <p className="amount">${amount}</p>
       <p className="title">{title}</p>
     </div>
   );

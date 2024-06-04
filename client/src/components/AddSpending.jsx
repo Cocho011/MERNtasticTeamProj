@@ -1,11 +1,21 @@
+import styled from "@emotion/styled";
 import { addSpending } from "../../dummyTest/dummyRoutes";
 import { useState } from "react";
+
+const StyledAddSpending = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+.addSpendingForm {
+display: flex;
+}
+`
 
 function AddSpending({ currentID, current }) {
   const [amount, setAmount] = useState(0);
   const [itemName, setItemName] = useState("");
   const onSubmit = () => {
-    console.log("running")
+    console.log("running");
     addSpending({
       userID: currentID,
       date: current.week,
@@ -17,9 +27,9 @@ function AddSpending({ currentID, current }) {
     });
   };
   return (
-    <div className="addSpending">
+    <StyledAddSpending className="addSpending">
+      <h3>Add Spending:</h3>
       <div className="addSpendingForm">
-        <h3>Add Spending:</h3>
         <div>
           <label>$</label>
           <input
@@ -39,8 +49,11 @@ function AddSpending({ currentID, current }) {
           ></input>
         </div>
       </div>
-      <button onClick={onSubmit} disabled={!current}> submit</button>
-    </div>
+      <button onClick={onSubmit} disabled={!current}>
+        {" "}
+        submit
+      </button>
+    </StyledAddSpending>
   );
 }
 
