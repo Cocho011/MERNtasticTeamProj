@@ -1,33 +1,9 @@
 [
     {
-      "name": "JavaScript"
+      "amount": 12
     },
     {
-      "name": "HTML"
-    },
-    {
-      "name": "CSS"
-    },
-    {
-      "name": "Node.js"
-    },
-    {
-      "name": "Express.js"
-    },
-    {
-      "name": "MySQL"
-    },
-    {
-      "name": "MongoDB"
-    },
-    {
-      "name": "React"
-    },
-    {
-      "name": "GraphQL"
-    },
-    {
-      "name": "Sequelize"
+      "amount": 69
     }
   ]
   
