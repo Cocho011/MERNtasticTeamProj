@@ -34,7 +34,7 @@ const spendingSchema = new Schema(
     // }
   );
 
-const Spending = model('Spending', thoughtSchema);
+const Spending = model('Spending', spendingSchema);
 
 module.exports = Spending;
 
