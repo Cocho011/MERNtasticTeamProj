@@ -1,5 +1,5 @@
 const { User, Budget, Spending } = require('../models');
-import { DateTimeResolver } from 'graphql-scalars';
+const { DateTimeResolver } = require ('graphql-scalars');
 // TO DO: ADD AUTH
 // const { signToken, AuthenticationError } = require('../utils/auth');
 
