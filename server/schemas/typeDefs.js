@@ -3,7 +3,7 @@ const typeDefs = `
     # TO DO: add custom scalar for Date type
     # https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
 
-    scalar Date
+    scalar DateTime
 
     type Budget {
         _id: ID!
