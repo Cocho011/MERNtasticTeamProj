@@ -8,13 +8,13 @@ const typeDefs = `
     type Budget {
         _id: ID!
         amount: Int!
-        # weekDate: Date
+        weekDate: DateTime!
         # users: [User]
     }
 
     type Spending {
         amount: Int!
-        # timeSubmitted: Date
+        timeSubmitted: DateTime!
         purchaseDescription: String!
         # users: [User]
     }
