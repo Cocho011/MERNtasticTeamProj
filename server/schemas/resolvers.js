@@ -5,11 +5,11 @@ import { DateTimeResolver } from 'graphql-scalars';
 
 const resolvers = {
     DateTime: DateTimeResolver,
-    // Query: {
-    // users: async () => {
-    //     return await User.find({});
-    // }
-    // }
+    Query: {
+        budgets: async () => {
+            return await Budget.find({});
+        }
+    }
 };
 
 module.exports = resolvers;
