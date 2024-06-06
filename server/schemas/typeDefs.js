@@ -35,7 +35,7 @@ const typeDefs = `
         spendings: [Spending]
         users: [User]
         # referencing 21-mern -> 07-query-arguments:
-        users(id: ID!): User
+        user(id: ID!): User
     }
 
 `;
