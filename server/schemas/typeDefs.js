@@ -7,7 +7,7 @@ const typeDefs = `
         _id: ID
         amount: Int!
         # weekDate: Date
-        # users: [User]
+        user: User
     }
 
     type Spending {
@@ -15,7 +15,7 @@ const typeDefs = `
         amount: Int!
         # timeSubmitted: Date
         purchaseDescription: String!
-        # users: [User]
+        user: User
     }
 
     type User {
@@ -35,7 +35,7 @@ const typeDefs = `
         spendings: [Spending]
         users: [User]
         # referencing 21-mern -> 07-query-arguments:
-        # users(id: ID!): User
+        users(id: ID!): User
     }
 
 `;
