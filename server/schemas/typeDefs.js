@@ -1,17 +1,18 @@
 const typeDefs = `
 
-    scalar DateTime
+    # scalar DateTime
 
     type Budget {
-        _id: ID!
+        _id: ID
         amount: Int!
         weekDate: DateTime!
         # users: [User]
     }
 
     type Spending {
+        _id: ID
         amount: Int!
-        timeSubmitted: DateTime!
+        # timeSubmitted: DateTime!
         purchaseDescription: String!
         # users: [User]
     }
@@ -24,7 +25,7 @@ const typeDefs = `
     }
 
     # type Auth {
-    #      token: ID!
+    #      token: ID
     #     user: User
     # }
 
