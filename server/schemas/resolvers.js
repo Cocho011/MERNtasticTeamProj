@@ -6,7 +6,17 @@ const { useContext } = require('react');
 
 
 const resolvers = {
-    
+    Query: {
+        budgets: async () => {
+            return await Budget.find({});
+        },
+        users: async () => {
+            return await User.find({});
+        },
+        spendings: async () => {
+            return await Spending.find({});
+        }
+    }
 };
 
 module.exports = resolvers;
