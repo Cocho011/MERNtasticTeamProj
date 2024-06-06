@@ -4,17 +4,18 @@ const typeDefs = `
     # https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
 
     type Budget {
-        _id: ID!
+        _id: ID
         amount: Int!
         # weekDate: Date
-        # users: [User]
+        user: User
     }
 
     type Spending {
+        _id: ID
         amount: Int!
         # timeSubmitted: Date
         purchaseDescription: String!
-        # users: [User]
+        user: User
     }
 
     type User {
@@ -32,9 +33,9 @@ const typeDefs = `
     type Query {
         budgets: [Budget]
         spendings: [Spending]
+        users: [User]
         # referencing 21-mern -> 07-query-arguments:
-        # users: [User]
-        # users(id: ID!): User
+        user(id: ID!): User
     }
 
 `;
