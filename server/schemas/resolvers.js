@@ -4,8 +4,8 @@ const { User, Budget, Spending } = require('../models');
 
 const resolvers = {
     Query: {
-        users: async () => {
-            return await User.find({});
+        budgets: async () => {
+            return await Budget.find({});
         }
     }
 };
