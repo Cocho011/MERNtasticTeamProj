@@ -9,6 +9,9 @@ const resolvers = {
         },
         users: async () => {
             return await User.find({});
+        },
+        spendings: async () => {
+            return await Spending.find({});
         }
     }
 };
