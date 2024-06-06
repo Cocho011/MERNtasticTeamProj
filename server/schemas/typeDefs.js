@@ -1,18 +1,18 @@
 const typeDefs = `
 
-    # scalar DateTime
+    # TO DO: add custom scalar for Date type
+    # https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
 
     type Budget {
-        _id: ID
+        _id: ID!
         amount: Int!
-        weekDate: DateTime!
+        # weekDate: Date
         # users: [User]
     }
 
     type Spending {
-        _id: ID
         amount: Int!
-        # timeSubmitted: DateTime!
+        # timeSubmitted: Date
         purchaseDescription: String!
         # users: [User]
     }
@@ -25,7 +25,7 @@ const typeDefs = `
     }
 
     # type Auth {
-    #      token: ID
+    #      token: ID!
     #     user: User
     # }
 
