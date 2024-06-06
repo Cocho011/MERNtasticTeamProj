@@ -6,10 +6,10 @@ const resolvers = {
     Query: {
         budgets: async () => {
             return await Budget.find({});
+        },
+        users: async () => {
+            return await User.find({});
         }
-        // users: async () => {
-        //     return await User.find({});
-        // }
     }
 };
 
