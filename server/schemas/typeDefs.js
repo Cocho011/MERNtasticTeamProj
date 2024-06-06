@@ -4,13 +4,14 @@ const typeDefs = `
     # https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
 
     type Budget {
-        _id: ID!
+        _id: ID
         amount: Int!
         # weekDate: Date
         # users: [User]
     }
 
     type Spending {
+        _id: ID
         amount: Int!
         # timeSubmitted: Date
         purchaseDescription: String!
