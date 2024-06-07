@@ -7,7 +7,7 @@ const typeDefs = `
         _id: ID
         amount: Int!
         # weekDate: Date
-        user: User
+        users: [User]
     }
 
     type Spending {
@@ -15,7 +15,7 @@ const typeDefs = `
         amount: Int!
         # timeSubmitted: Date
         purchaseDescription: String!
-        user: User
+        users: [User]
     }
 
     type User {
