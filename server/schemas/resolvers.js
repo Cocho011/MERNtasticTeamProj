@@ -8,8 +8,19 @@ const { User, Budget, Spending } = require('../models');
 const resolvers = {
     Query: {        
         budgets: async (parent, args, context) => {
+            // Testing to make sure static data works
+            // try {
+            //     const staticBudgets = [
+            //         { _id: '1', amount: 1000 },
+            //         { _id: '2', amount: 2000 },
+    
+            //     ];
+            //     return staticBudgets;
+            // } catch (error) {
+            //     throw new Error('Failed to fetch budgets');
+            // }
             try {
-                const budget = await Budget.findOne({ _id: context.budget._id });
+                const budget = await Budget.find({});
                 return budget;
             } catch (error) {
                 throw new Error('Failed to fetch budget');
@@ -17,20 +28,18 @@ const resolvers = {
         },
         spendings: async (parent, args, context) => {
             try {
-                const spending = await Spending.find({ _id: context.spending._id });
+                const spending = await Spending.find({});
                 return spending;
             } catch (error) {
                 throw new Error('Failed to fetch spending');
             }
         },
+        //This works for querying users
         users: async () => {
             return User.find({});
         },
-        user: async (parent, args, context) => {
-            if (context.user) {
-                return User.findOne({ _id: context.user._id });
-              }
-              throw AuthenticationError;
+        user: async (parent, { userId }) => {
+            return User.findOne({_id: userId});
             // TO DO: I think auth goes here?
          }
     }
