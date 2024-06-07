@@ -24,8 +24,15 @@ const resolvers = {
             }
         },
         users: async () => {
-            return await User.find({});
+            return User.find({});
         },
+        user: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id });
+              }
+              throw AuthenticationError;
+            // TO DO: I think auth goes here?
+         },
     }
 };
 
