@@ -15,8 +15,13 @@ const resolvers = {
                 throw new Error('Failed to fetch budget');
             }
         },
-        spendings: async () => {
-            return await Spending.find({});
+        spendings: async (parent, args, context) => {
+            try {
+                const spending = await Spending.find({ _id: context.spending._id });
+                return spending;
+            } catch (error) {
+                throw new Error('Failed to fetch spending');
+            }
         },
         users: async () => {
             return await User.find({});
