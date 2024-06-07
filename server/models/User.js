@@ -23,7 +23,7 @@ const userSchema = new Schema(
         required: true,
         default: function(){
           const saltRounds = 10;
-          return bcrypt.hashSync(this.email + Date.now(), saltRounds);
+          return bcrypt.hash(this.email + Date.now(), saltRounds);
         },
       },
     },
