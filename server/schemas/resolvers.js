@@ -32,7 +32,7 @@ const resolvers = {
               }
               throw AuthenticationError;
             // TO DO: I think auth goes here?
-         },
+         }
     }
 };
 
