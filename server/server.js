@@ -1,61 +1,56 @@
 const express = require('express');
-// Import the ApolloServer class
-const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
-
-// Import the two parts of a GraphQL schema
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
-
-const PORT = process.env.PORT || 3001;
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+const cors = require('cors');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
-// Create a new instance of an Apollo server with the GraphQL schema
-const startApolloServer = async () => {
-  await server.start();
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.json());
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/budget-tracker', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-  app.use('/graphql', expressMiddleware(server));
+const User = require('./models/User'); // Assuming you have a User model defined
 
-  db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
-    });
-  });
-};
+// Signup
+app.post('/api/signup', async (req, res) => {
+  const { username, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({ username, password: hashedPassword });
+  await user.save();
+  const token = jwt.sign({ userId: user._id }, 'SECRET_KEY');
+  res.json({ success: true, token });
+});
 
-// Call the async function to start the server
-startApolloServer();
+// Login
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
+  if (!user) {
+    return res.json({ success: false, message: 'User not found' });
+  }
+  const isValid = await bcrypt.compare(password, user.password);
+  if (!isValid) {
+    return res.json({ success: false, message: 'Invalid credentials' });
+  }
+  const token = jwt.sign({ userId: user._id }, 'SECRET_KEY');
+  res.json({ success: true, token });
+});
 
+// Fetch User Data
+app.get('/api/user', async (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'SECRET_KEY');
+  const user = await User.findById(decoded.userId);
+  res.json({ id: user._id, username: user.username, /* other user data */ });
+});
 
-
-// const express = require('express');
-// const db = require('./config/connection');
-// const path = require('path');
-
-// const PORT = 3001;
-// const app = express();
-
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-
-// app.use(express.static(path.join(__dirname, '..', 'client')));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
-// });
-
-
-// db.once('open', () => {
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}!`);
-//   });
-// });
+app.listen(3001, () => {
+  console.log('Server is running on port 3001');
+});
