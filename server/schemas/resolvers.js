@@ -7,8 +7,13 @@ const { User, Budget, Spending } = require('../models');
 
 const resolvers = {
     Query: {        
-        budgets: async () => {
-            return await Budget.find({});
+        budgets: async (parent, args, context) => {
+            try {
+                const budget = await Budget.findOne({ _id: context.budget._id });
+                return budget;
+            } catch (error) {
+                throw new Error('Failed to fetch budget');
+            }
         },
         spendings: async () => {
             return await Spending.find({});
