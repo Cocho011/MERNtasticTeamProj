@@ -46,7 +46,8 @@ This project is a performant and scalable single-page application built using th
 - Carolina Ochoa - [Cocho011](https://github.com/Cocho011)
 
 ## References
-
+- https://the-guild.dev/graphql/scalars/docs/quick-start
+- https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
 
 ## License
 
