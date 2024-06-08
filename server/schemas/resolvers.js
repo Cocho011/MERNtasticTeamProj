@@ -51,6 +51,9 @@ const resolvers = {
         addSpending: async (parent, { amount, timeSubmitted, purchaseDescription, userId }) => {
             return await Spending.create({ amount, timeSubmitted, purchaseDescription, userId });
         },
+        removeSpending: async (parent, { spendingId }) => {
+            return Spending.findOneAndDelete({ _id: spendingId });
+        },
     },
 };
 
