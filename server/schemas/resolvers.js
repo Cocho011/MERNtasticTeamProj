@@ -41,8 +41,17 @@ const resolvers = {
         user: async (parent, { userId }) => {
             return User.findOne({_id: userId});
             // TO DO: I think auth goes here?
-         }
-    }
+         },
+    },
+
+    Mutation: {
+        addBudget: async (parent, { amount, weekDate, userId }) => {
+            return await Budget.create({ amount, weekDate, userId });
+        },
+        addSpending: async (parent, { amount, timeSubmitted, purchaseDescription, userId }) => {
+            return await Budget.create({ amount, timeSubmitted, purchaseDescription, userId });
+        },
+    },
 };
 
 module.exports = resolvers;
