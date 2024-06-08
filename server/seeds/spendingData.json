@@ -1,10 +1,14 @@
 [
     {
         "amount": 4,
-        "purchaseDescription": "yipee"
+        "timeSubmitted": "12/01/24",
+        "purchaseDescription": "yipee",
+        "userId": "id456"
     },
     {
         "amount": 8,
-        "purchaseDescription": "test"
+        "timeSubmitted": "12/12/24",
+        "purchaseDescription": "test",
+        "userId": "id456"
     }
 ]
