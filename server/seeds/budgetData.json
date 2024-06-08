@@ -1,13 +1,23 @@
 [
     {
-      "amount": 12,
-      "weekDate": "12/05/2021",
-      "userId": "id123"
+      "amount": 500,
+      "weekDate": "5/12/2024",
+      "users": "myuser"
     },
     {
-      "amount": 69,
-      "weekDate": "02/05/2000",
-      "userId": "id456"
+      "amount": 600,
+      "weekDate": "5/19/2024",
+      "users": "myuser"
+    },
+    {
+      "amount": 1750,
+      "weekDate": "5/26/2024",
+      "users": "myuser"
+    },
+    {
+      "amount": 200,
+      "weekDate": "6/2/2024",
+      "users": "myuser"
     }
   ]
   

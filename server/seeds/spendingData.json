@@ -1,14 +1,26 @@
 [
     {
-        "amount": 4,
-        "timeSubmitted": "12/01/24",
-        "purchaseDescription": "yipee",
-        "userId": "id456"
+        "amount": 112,
+        "timeSubmitted": "5/14/2024",
+        "purchaseDescription": "Groceries",
+        "users": "myuser"
     },
     {
-        "amount": 8,
-        "timeSubmitted": "12/12/24",
-        "purchaseDescription": "test",
-        "userId": "id456"
+        "amount": 46,
+        "timeSubmitted": "5/15/2024",
+        "purchaseDescription": "Gas",
+        "users": "myuser"
+    },
+    {
+        "amount": 126,
+        "timeSubmitted": "5/24/2024",
+        "purchaseDescription": "Utilities",
+        "users": "myuser"
+    },
+    {
+        "amount": 1580,
+        "timeSubmitted": "6/1/2024",
+        "purchaseDescription": "Rent",
+        "users": "myuser"
     }
 ]
