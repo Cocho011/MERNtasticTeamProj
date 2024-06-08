@@ -7,8 +7,9 @@ const spendingSchema = new Schema(
         required: true,
       },
       timeSubmitted: {
-        type: Date,
-        default: Date.now,
+        // type: Date,
+        // default: Date.now,
+        type: String,
         required: true,
         // TO DO: add date formatting
       },
@@ -18,13 +19,17 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
-    users: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
+    userId: {
+      // [
+      type: String,
+      required: true,
+      // {
+      //   type: Schema.Types.ObjectId,
+      //   ref: 'User'
+      // }
       // TO DO: default: [user from current session]
-    ],
+      // ],
+    },
     },
     // set this to use virtual below
     // {
