@@ -40,7 +40,7 @@ const typeDefs = `
 
     type Mutation {
         addBudget(amount: Int!, weekDate: String!, userId: String!): Budget
-        addSpending(amount: Int!, timeSubmitted: String!, purchaseDescription: String!, userId: String!): Budget
+        addSpending(amount: Int!, timeSubmitted: String!, purchaseDescription: String!, userId: String!): Spending
     }
 
 `;

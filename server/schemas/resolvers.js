@@ -6,14 +6,14 @@ const { User, Budget, Spending } = require('../models');
 
 
 const resolvers = {
-    Query: {        
+    Query: {
         budgets: async (parent, args, context) => {
             // Testing to make sure static data works
             // try {
             //     const staticBudgets = [
             //         { _id: '1', amount: 1000 },
             //         { _id: '2', amount: 2000 },
-    
+
             //     ];
             //     return staticBudgets;
             // } catch (error) {
