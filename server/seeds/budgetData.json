@@ -2,12 +2,12 @@
     {
       "amount": 12,
       "weekDate": "12/05/2021",
-      "userID": "id123"
+      "userId": "id123"
     },
     {
       "amount": 69,
       "weekDate": "02/05/2000",
-      "userID": "id456"
+      "userId": "id456"
     }
   ]
   

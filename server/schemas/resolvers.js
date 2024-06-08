@@ -49,7 +49,7 @@ const resolvers = {
             return await Budget.create({ amount, weekDate, userId });
         },
         addSpending: async (parent, { amount, timeSubmitted, purchaseDescription, userId }) => {
-            return await Budget.create({ amount, timeSubmitted, purchaseDescription, userId });
+            return await Spending.create({ amount, timeSubmitted, purchaseDescription, userId });
         },
     },
 };
