@@ -38,10 +38,10 @@ const resolvers = {
         users: async () => {
             return User.find({});
         },
-        user: async (parent, { userId }) => {
-            return User.findOne({_id: userId});
-            // TO DO: I think auth goes here?
-         },
+        // user: async (parent, { userId }) => {
+        //     return User.findOne({_id: userId});
+        //     // TO DO: I think auth goes here?
+        //  },
     },
 
     Mutation: {
