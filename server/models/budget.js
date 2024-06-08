@@ -7,18 +7,23 @@ const budgetSchema = new Schema(
       required: true,
     },
     weekDate: {
-      type: Date,
+      type: String,
       required: true,
-      default: Date.now,
+      // type: Date,
+      // default: Date.now,
       // TO DO: add date formatting
     },
-    users: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
+    userId: {
+      // [
+      type: String,
+      required: true,
+      // {
+      //   type: Schema.Types.ObjectId,
+      //   ref: 'User'
+      // }
       // TO DO: default: [user from current session]
-    ],
+      // ],
+    },
   },
   // set this to use virtual below
   // {

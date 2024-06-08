@@ -6,14 +6,14 @@ const { User, Budget, Spending } = require('../models');
 
 
 const resolvers = {
-    Query: {        
+    Query: {
         budgets: async (parent, args, context) => {
             // Testing to make sure static data works
             // try {
             //     const staticBudgets = [
             //         { _id: '1', amount: 1000 },
             //         { _id: '2', amount: 2000 },
-    
+
             //     ];
             //     return staticBudgets;
             // } catch (error) {
@@ -38,11 +38,23 @@ const resolvers = {
         users: async () => {
             return User.find({});
         },
-        user: async (parent, { userId }) => {
-            return User.findOne({_id: userId});
-            // TO DO: I think auth goes here?
-         }
-    }
+        // user: async (parent, { userId }) => {
+        //     return User.findOne({_id: userId});
+        //     // TO DO: I think auth goes here?
+        //  },
+    },
+
+    Mutation: {
+        addBudget: async (parent, { amount, weekDate, userId }) => {
+            return await Budget.create({ amount, weekDate, userId });
+        },
+        addSpending: async (parent, { amount, timeSubmitted, purchaseDescription, userId }) => {
+            return await Spending.create({ amount, timeSubmitted, purchaseDescription, userId });
+        },
+        removeSpending: async (parent, { spendingId }) => {
+            return Spending.findOneAndDelete({ _id: spendingId });
+        },
+    },
 };
 
 module.exports = resolvers;
