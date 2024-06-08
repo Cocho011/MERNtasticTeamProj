@@ -15,7 +15,7 @@ const typeDefs = `
     type Spending {
         _id: ID
         amount: Int!
-        # timeSubmitted: Date
+        timeSubmitted: DateTime!
         purchaseDescription: String!
         users: [User]
     }
