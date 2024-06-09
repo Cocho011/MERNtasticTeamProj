@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Budget = require('./Budget');
 
 const userSchema = new Schema(
     {
@@ -18,7 +19,13 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
+      // this will allow weekly budget to be added to user and become part of user history
+      budgets:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Budget',
+      }], 
     },
+
     // set this to use virtual below
     {
       toJSON: {

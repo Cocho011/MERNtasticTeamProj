@@ -1,8 +1,6 @@
 const typeDefs = `
 
-    # TO DO: add custom scalar for Date type
-    # https://stackoverflow.com/questions/49693928/date-and-json-in-type-definition-for-graphql
-
+ 
     type Budget {
         _id: ID
         amount: Int!
@@ -25,10 +23,10 @@ const typeDefs = `
         password: String!
     }
 
-    # type Auth {
-    #      token: ID!
-    #     user: User
-    # }
+     type Auth {
+     token: ID!
+     user: User
+     }
 
     type Query {
         budgets: [Budget]
@@ -39,6 +37,8 @@ const typeDefs = `
     }
 
     type Mutation {
+        addUser(username: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
         addBudget(amount: Int!, weekDate: String!, userId: String!): Budget
         addSpending(amount: Int!, timeSubmitted: String!, purchaseDescription: String!, userId: String!): Spending
         removeSpending(spendingId: ID!): Spending

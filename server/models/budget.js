@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const spendingSchema = require('./Spending');
 
 const budgetSchema = new Schema(
   {
@@ -13,17 +14,12 @@ const budgetSchema = new Schema(
       // default: Date.now,
       // TO DO: add date formatting
     },
-    userId: {
+    username: {
       // [
       type: String,
       required: true,
-      // {
-      //   type: Schema.Types.ObjectId,
-      //   ref: 'User'
-      // }
-      // TO DO: default: [user from current session]
-      // ],
     },
+    spending: [spendingSchema]
   },
   // set this to use virtual below
   // {
