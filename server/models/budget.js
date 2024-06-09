@@ -14,11 +14,7 @@ const budgetSchema = new Schema(
       // default: Date.now,
       // TO DO: add date formatting
     },
-    username: {
-      // [
-      type: String,
-      required: true,
-    },
+   
     spending: [spendingSchema]
   },
   // set this to use virtual below

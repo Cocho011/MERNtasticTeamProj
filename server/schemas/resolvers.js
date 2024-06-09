@@ -74,9 +74,16 @@ me: async (parent, args, context) => {
             return { token, user };
           },
       
-        addBudget: async (parent, { amount, weekDate, userId }) => {
-            return await Budget.create({ amount, weekDate, userId });
+          // full weekly budget 
+        addBudget: async (parent, { amount, weekDate,}, context) => {
+            if (context.user) {
+                const budget= await Budget.create({ amount, weekDate, });
+            const user = await User.findByIdAndUpdate(context.user._id, { $push: { budgets: budget._id } }, { new: true });
+            return user;    
+        }
+        throw AuthenticationError;
         },
+
         addSpending: async (parent, { amount, timeSubmitted, purchaseDescription, userId }) => {
             return await Spending.create({ amount, timeSubmitted, purchaseDescription, userId });
         },

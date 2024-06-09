@@ -4,7 +4,7 @@ const typeDefs = `
         _id: ID
         amount: Int!
         weekDate: String!
-        userId: String!
+        spending: [Spending]
     }
 
     type Spending {
@@ -12,7 +12,6 @@ const typeDefs = `
         amount: Int!
         timeSubmitted: String!
         purchaseDescription: String!
-        userId: String!
     }
 
     type User {
@@ -20,6 +19,7 @@ const typeDefs = `
         username: String!
         email: String!
         password: String!
+        budgets: [Budget]
     }
 
      type Auth {
@@ -39,7 +39,7 @@ const typeDefs = `
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addBudget(amount: Int!, weekDate: String!, userId: String!): Budget
+        addBudget(amount: Int!, weekDate: String!): User
         addSpending(amount: Int!, timeSubmitted: String!, purchaseDescription: String!, userId: String!): Spending
         removeSpending(spendingId: ID!): Spending
     }
