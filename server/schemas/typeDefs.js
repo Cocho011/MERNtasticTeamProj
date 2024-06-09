@@ -9,7 +9,8 @@ const typeDefs = `
         _id: ID
         amount: Int!
         weekDate: DateTime!
-        users: [User]
+        userId: ID
+        user: User
     }
 
     type Spending {
@@ -17,7 +18,8 @@ const typeDefs = `
         amount: Int!
         timeSubmitted: DateTime!
         purchaseDescription: String!
-        users: [User]
+        userId: ID
+        user: User
     }
 
     type User {
@@ -43,3 +45,6 @@ const typeDefs = `
 `;
 
 module.exports = typeDefs;
+
+
+// ID cannot represent value: { _id: 6663bfb1946f5940f5173c26, username: "myuser", email: "email@email.com", password: "asdfjkl", __v: 0, id: "6663bfb1946f5940f5173c26" }

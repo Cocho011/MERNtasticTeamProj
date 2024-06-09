@@ -7,6 +7,21 @@ const { DateTimeResolver } = require("graphql-scalars");
 
 const resolvers = {
   DateTime: DateTimeResolver,
+  Spending: {
+    user: async (spendingItem) => {
+      await User.findById(spendingItem.userId);
+    },
+  },
+
+//   User: {
+//     // budgets: async (user) => {
+//     //     await Budget.find({ userId: user._id });
+//     // },
+//     spendings: async (user) => {
+//       await Spending.find({ userId: user._id });
+//     },
+//   },
+
   Query: {
     budgets: async (parent, args, context) => {
       // Testing to make sure static data works
@@ -27,9 +42,9 @@ const resolvers = {
         throw new Error("Failed to fetch budget");
       }
     },
-    spendings: async (parent, args, context) => {
+    spendings: async (_, { userId }) => {
       try {
-        const spending = await Spending.find({});
+        const spending = await Spending.find({}).populate("userId");
         return spending;
       } catch (error) {
         throw new Error("Failed to fetch spending");

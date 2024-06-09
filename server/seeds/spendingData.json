@@ -1,9 +1,11 @@
 [
     {
+        "userId": "6663bfb1946f5940f5173c26",
         "amount": 4,
         "purchaseDescription": "yipee"
     },
     {
+        "userId": "6663bfb1946f5940f5173c26",
         "amount": 8,
         "purchaseDescription": "test"
     }
