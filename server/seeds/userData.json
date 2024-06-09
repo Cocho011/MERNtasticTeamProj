@@ -1,12 +1,12 @@
 [
     {
-        "username": "myuser",
-        "email": "email@email.com",
+        "username": "myfirstuser",
+        "email": "funemail@email.com",
         "password": "@sdfjkl42"
     },
     {
-        "username": "user2",
-        "email": "email2@email.com",
+        "username": "user12",
+        "email": "email12@email.com",
         "password": "yesbigpassword!987"
     },
     {
