@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { addNextWeekBudget } from "../../dummyTest/dummyRoutes";
+import { addNextWeekBudget } from "../dummyTest/dummyRoutes";
 import { useState } from "react";
 
-const SyledAddNextWeekBudget = styled.div`
+const StyledAddNextWeekBudget = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -20,7 +20,7 @@ function AddNextWeekBudget({ currentID, nextWeekDate }) {
   // if you only have access to the current date, a function will
   // need to be created to calculate the next week date
   return (
-    <SyledAddNextWeekBudget className="addNextWeekBudget">
+    <StyledAddNextWeekBudget className="addNextWeekBudget">
       <h2>Next Week</h2>
       <div>
         <label>My budget will be:</label>
@@ -37,7 +37,7 @@ function AddNextWeekBudget({ currentID, nextWeekDate }) {
       >
         Submit
       </button>
-    </SyledAddNextWeekBudget>
+    </StyledAddNextWeekBudget>
   );
 }
 
