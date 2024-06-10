@@ -28,3 +28,12 @@ mutation addSpending($amount: Int!, $timeSubmitted: String!, $purchaseDescriptio
   }
 }
 `;
+export const ADD_BUDGET = gql`
+mutation addBudget($amount: Int!, $weekDate: String!, $userId: String!) {
+  addBudget(amount: $amount, weekDate: $weekDate, userId: $userId) {
+    _id
+    amount
+    weekDate
+  }
+}
+`;

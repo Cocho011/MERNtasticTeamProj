@@ -10,7 +10,8 @@ import { GET_BUDGETS_BY_USERID, GET_SPENDINGS_BY_USERID } from "../queries";
 import styled from "@emotion/styled";
 
 const dummyUserID = "123";
-const dummyDay = "06/10/2024"
+const dummyDay = "06/10/2024";
+const dummyNextWeek = "06/17/2024";
 
 const StyledDashboard = styled.div`
   display: flex;
@@ -80,18 +81,19 @@ function DashboardPage() {
           <div className="spendingHistoryContainer">
             <h3 className="spendingHistoryTitle">Spending History</h3>
             <SpendingHistory
-                  weekSpending={
-                    spendingsData ? spendingsData.spendings : null
-                  }
-                />
+              weekSpending={spendingsData ? spendingsData.spendings : null}
+            />
           </div>
         </div>
         <AddSpending currentID={dummyUserID} currentDay={dummyDay} />
       </StyledCurrentWeek>
-      {/* <AddNextWeekBudget currentID={dummyUserID} nextWeekDate={nextWeek} /> */}
-      {/* {userHistory && ( */}
-      {/* <BudgetHistory userHistory={Object.entries(userHistory).slice(1)} /> */}
-      {/* )} */}
+      <AddNextWeekBudget currentID={dummyUserID} nextWeekDate={dummyNextWeek} />
+      {budgetsData && spendingsData && (
+        <BudgetHistory budgetHistory={budgetsData.budgets.slice(1)} 
+        spendingHistory={spendingsData.spendings}
+        />
+        
+      )}
     </StyledDashboard>
   );
 }
