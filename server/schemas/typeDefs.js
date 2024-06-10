@@ -25,12 +25,13 @@ const typeDefs = `
         password: String!
     }
 
-    # type Auth {
-    #      token: ID!
-    #     user: User
-    # }
+    type Auth {
+        token: ID!
+        user: User
+    }
 
     type Query {
+        me: User
         budgets: [Budget]
         spendings: [Spending]
         users: [User]
@@ -42,6 +43,8 @@ const typeDefs = `
         addBudget(amount: Int!, weekDate: String!, userId: String!): Budget
         addSpending(amount: Int!, timeSubmitted: String!, purchaseDescription: String!, userId: String!): Spending
         removeSpending(spendingId: ID!): Spending
+        addUser(username: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
     }
 
 `;
