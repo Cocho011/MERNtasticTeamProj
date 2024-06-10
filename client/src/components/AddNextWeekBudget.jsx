@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { addNextWeekBudget } from "../../dummyTest/dummyRoutes";
+import { addNextWeekBudget } from "../../../server/seeds/budgetData.json";
 import { useState } from "react";
 
 const SyledAddNextWeekBudget = styled.div`
