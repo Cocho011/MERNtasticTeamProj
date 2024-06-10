@@ -18,6 +18,7 @@
       "amount": 200,
       "weekDate": "6/2/2024",
       "userId": "123"
+      // "spent": 0 needs spent columns
     }
   ]
   

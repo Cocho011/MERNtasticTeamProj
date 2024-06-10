@@ -11,7 +11,7 @@ display: flex;
 }
 `
 
-function AddSpending({ currentID, current }) {
+function AddSpending({ current, spendingData }) {
   const [amount, setAmount] = useState(0);
   const [itemName, setItemName] = useState("");
   const onSubmit = () => {
