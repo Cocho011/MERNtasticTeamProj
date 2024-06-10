@@ -18,6 +18,14 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
+      secretKey: {
+        type: String,
+        required: true,
+        default: function(){
+          const saltRounds = 10;
+          return bcrypt.hash(this.email + Date.now(), saltRounds);
+        },
+      },
     },
     // set this to use virtual below
     {
