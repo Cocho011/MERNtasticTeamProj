@@ -44,8 +44,8 @@ function CurrentBudget({ totalBudget, spent }) {
 function CurrentBudgetRow({ amount, title }) {
   return (
     <div className="currentBudgetRow">
-      <p className="amount">${amount}</p>
-      <p className="title">{title}</p>
+      <h3 className="amount">${amount}</h3>
+      <h3 className="title">{title}</h3>
     </div>
   );
 }

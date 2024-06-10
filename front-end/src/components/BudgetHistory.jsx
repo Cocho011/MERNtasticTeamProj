@@ -33,13 +33,13 @@ function BudgetHistory({ budgetHistory, spendingHistory }) {
         ))}
         {/* <WeekBudget weekData={userHistory[0][1]} week={userHistory[0][0]} /> */}
       </div>
-      <p
+      <button
         className="viewDropDown"
         onClick={() => setViewAll(true)}
         hidden={viewAll}
       >
         View All
-      </p>
+      </button>
     </StyledBudgetHistory>
   );
 }
