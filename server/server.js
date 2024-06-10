@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 // Import the ApolloServer class
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
@@ -19,6 +20,12 @@ const app = express();
 const startApolloServer = async () => {
   await server.start();
 
+  if (process.env.NODE_ENV === 'production') {
+    const BUILD_PATH = '../front-end/dist'
+    app.get('*', express.static(BUILD_PATH), (req, res) => {
+      res.sendFile(path.resolve(__dirname, BUILD_PATH, 'index.html'))
+    })
+  }
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
