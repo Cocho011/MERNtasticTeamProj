@@ -21,10 +21,10 @@ const startApolloServer = async () => {
   await server.start();
 
   if (process.env.NODE_ENV === 'production') {
-    const BUILD_PATH = '../front-end/dist'
+    const BUILD_PATH = path.resolve(__dirname,'../front-end/dist')
     app.use( express.static(BUILD_PATH))
     app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, BUILD_PATH, 'index.html'))
+      res.sendFile(path.resolve(BUILD_PATH, 'index.html'))
     })
   }
   app.use(express.urlencoded({ extended: false }));
