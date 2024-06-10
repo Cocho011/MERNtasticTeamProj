@@ -27,9 +27,9 @@ function SpendingHistory({ weekSpending }) {
 function SpendingHistoryRow({ data }) {
   return (
     <div className="spendingHistoryRow">
-      <p className="date">{data.date}</p>
-      <p className="cost">{data.cost}</p>
-      <p className="item">{data.item}</p>
+      <p className="date">{data.timeSubmitted}</p>
+      <p className="cost">{data.amount}</p>
+      <p className="item">{data.purchaseDescription}</p>
     </div>
   );
 }

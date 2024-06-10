@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchUserData } from "../utils/api";
 import MainWeek from "../components/MainWeek";
+import SpendingHistory from "../components/SpendingHistory";
 import AddNextWeekBudget from "../components/AddNextWeekBudget";
 import AddSpending from "../components/AddSpending";
 import BudgetHistory from "../components/BudgetHistory";
@@ -8,7 +9,7 @@ import { useQuery } from "@apollo/client";
 import { GET_BUDGETS_BY_USERID, GET_SPENDINGS_BY_USERID } from "../queries";
 import styled from "@emotion/styled";
 
-const StyledApp = styled.div`
+const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +62,7 @@ function DashboardPage() {
   }
 
   return (
-    <StyledApp>
+    <StyledDashboard>
       <h2>
         Current Week (
         {budgetsData ? budgetsData.budgets[0].weekDate : "loading..."})
@@ -75,11 +76,11 @@ function DashboardPage() {
           />
           <div className="spendingHistoryContainer">
             <h3 className="spendingHistoryTitle">Spending History</h3>
-            {/* <SpendingHistory
+            <SpendingHistory
                   weekSpending={
-                    current ? userHistory[current.week].spending : null
+                    spendingsData ? spendingsData.spendings : null
                   }
-                /> */}
+                />
           </div>
         </div>
         {/* <AddSpending currentID={dummyUserID} current={current} /> */}
@@ -88,7 +89,7 @@ function DashboardPage() {
       {/* {userHistory && ( */}
       {/* <BudgetHistory userHistory={Object.entries(userHistory).slice(1)} /> */}
       {/* )} */}
-    </StyledApp>
+    </StyledDashboard>
   );
 }
 
