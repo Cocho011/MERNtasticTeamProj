@@ -22,7 +22,8 @@ const startApolloServer = async () => {
 
   if (process.env.NODE_ENV === 'production') {
     const BUILD_PATH = '../front-end/dist'
-    app.get('*', express.static(BUILD_PATH), (req, res) => {
+    app.use( express.static(BUILD_PATH))
+    app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, BUILD_PATH, 'index.html'))
     })
   }
