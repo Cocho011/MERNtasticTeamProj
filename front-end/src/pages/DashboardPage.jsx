@@ -4,8 +4,15 @@ import MainWeek from '../components/MainWeek';
 import AddNextWeekBudget from '../components/AddNextWeekBudget';
 import AddSpending from '../components/AddSpending';
 import BudgetHistory from '../components/BudgetHistory';
+import { useQuery } from '@apollo/client';
+import { GET_BUDGETS_BY_USERID } from '../queries';
 
 function DashboardPage() {
+  const { loading, error, data } = useQuery(GET_BUDGETS_BY_USERID, {
+    variables: { userId: '123' },
+  
+  });
+  if (!loading) {console.log(data)}
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {

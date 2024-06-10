@@ -2,6 +2,7 @@ const express = require('express');
 // Import the ApolloServer class
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
+const cors = require ('cors');
 
 // Import the two parts of a GraphQL schema
 const { typeDefs, resolvers } = require('./schemas');
@@ -14,6 +15,14 @@ const server = new ApolloServer({
 });
 
 const app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
