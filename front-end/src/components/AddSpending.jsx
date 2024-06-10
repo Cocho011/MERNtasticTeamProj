@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { addSpending } from "../../dummyTest/dummyRoutes";
+import { addSpending } from "../dummyTest/dummyRoutes";
 import { useState } from "react";
 
 const StyledAddSpending = styled.div`
