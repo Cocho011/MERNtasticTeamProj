@@ -32,7 +32,7 @@ function CurrentBudget({ totalBudget, spent }) {
   return (
     <div className="currentBudget">
       <CurrentBudgetRow
-        amount={spent === 0 ? spent - totalBudget : 0}
+        amount={spent === 0 ? totalBudget - spent : 0}
         title="Remaining"
       />
       <CurrentBudgetRow amount={spent} title="Spent" />
