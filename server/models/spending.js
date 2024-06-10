@@ -19,29 +19,29 @@ const spendingSchema = new Schema(
         minlength: 3,
         default: 'Spending category',
       },
-    userId: {
-      // [
-      type: String,
-      required: true,
-      // {
-      //   type: Schema.Types.ObjectId,
-      //   ref: 'User'
-      // }
-      // TO DO: default: [user from current session]
-      // ],
-    },
-    },
+    // userId: {
+    //   // [
+    //   type: String,
+    //   required: true,
+    //   // {
+    //   //   type: Schema.Types.ObjectId,
+    //   //   ref: 'User'
+    //   // }
+    //   // TO DO: default: [user from current session]
+    //   // ],
+    // },
+    // },
     // set this to use virtual below
     // {
     //   toJSON: {
     //     virtuals: true,
     //   },
-    // }
+  }
   );
 
-const Spending = model('Spending', spendingSchema);
+// const Spending = model('Spending', spendingSchema);
 
-module.exports = Spending;
+module.exports = spendingSchema;
 
 
 
