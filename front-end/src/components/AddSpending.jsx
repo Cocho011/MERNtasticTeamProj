@@ -54,7 +54,7 @@ function AddSpending({ currentDay, currentID }) {
           ></input>
         </div>
         <div>
-          <label>for</label>
+          <label className="for">for</label>
           <input
             type="text"
             placeholder="item"

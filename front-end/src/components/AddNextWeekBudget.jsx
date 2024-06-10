@@ -35,7 +35,7 @@ function AddNextWeekBudget({ currentID, nextWeekDate }) {
     <SyledAddNextWeekBudget className="addNextWeekBudget">
       <h2>Next Week</h2>
       <div>
-        <label>My budget will be:</label>
+        <label className="nextBudget">My budget will be:</label>
         <input
           onChange={(e) => setTotalBudget(e.target.value)}
           type="number"

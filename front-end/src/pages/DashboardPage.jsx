@@ -13,23 +13,88 @@ const dummyUserID = "123";
 const dummyDay = "06/10/2024";
 const dummyNextWeek = "06/17/2024";
 
+
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 7%;
+  padding: 7% 7%;
   align-items: center;
+  background-color: #66d88e;
+  background-color: ;
+  max-width: 900px;
+  border-radius: 130px;
+  margin: 50px auto;
+  .addNextWeekBudget {
+    border: 5px solid black;
+    border-radius: 60px;
+    background-color: #bbbbbb;
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px 0;
+    .nextBudget {
+      margin-right: 10px;
+    }
+  }
+
+  .budgetHistory {
+    border: 5px solid black;
+    border-radius: 60px;
+    background-color: #bbbbbb;
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px 0;
+    .viewDropDown {
+      cursor: pointer;
+    }
+  }
+  .budgetHistoryContainer {
+    width: 80%;
+    .weekBudget {
+      border: 3px solid black;
+      border-radius: 10px;
+      margin-top: 20px;
+      .weekBudgetContainer {
+        padding: 0 20px;
+        .spendingHistory {
+          border-top: 5px solid black;
+        }
+      }
+    }
+  }
 `;
 
 const StyledCurrentWeek = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  border: 5px solid black;
+  border-radius: 60px;
+  background-color: #bbbbbb;
+  > * {
+    padding: 0 30px;
+  }
   .currentWeekTop {
+    border-bottom: 5px solid black;
+    position: relative;
+    overflow-y: scroll;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    max-height: 300px;
     > * {
       flex: 1;
+      max-height: 100%;
+    }
+    .spendingHistoryContainer {
+      border-left: 5px solid black;
+    }
+  }
+  .addSpending {
+    padding: 20px 0;
+    .for {
+    margin-left: 10px;
+    margin-right: 10px;
     }
   }
   .spendingHistoryContainer {
@@ -37,6 +102,7 @@ const StyledCurrentWeek = styled.div`
       text-align: center;
     }
   }
+  
 `;
 
 function DashboardPage() {
@@ -81,7 +147,7 @@ function DashboardPage() {
           <div className="spendingHistoryContainer">
             <h3 className="spendingHistoryTitle">Spending History</h3>
             <SpendingHistory
-              weekSpending={spendingsData ? spendingsData.spendings : null}
+              weekSpending={spendingsData ? spendingsData.spendings.slice(0,3) : null}
             />
           </div>
         </div>
