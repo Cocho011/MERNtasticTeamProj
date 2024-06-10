@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import { addSpending } from "../dummyTest/dummyRoutes";
 import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_SPENDING, GET_SPENDINGS_BY_USERID } from "../queries";
+
 
 const StyledAddSpending = styled.div`
 display: flex;
@@ -11,19 +14,30 @@ display: flex;
 }
 `
 
-function AddSpending({ currentID, current }) {
+function AddSpending({ currentDay, currentID }) {
   const [amount, setAmount] = useState(0);
   const [itemName, setItemName] = useState("");
-  const onSubmit = () => {
-    console.log("running");
-    addSpending({
-      userID: currentID,
-      date: current.week,
-      spendingItem: {
-        date: current.month + "/" + current.day,
-        cost: amount,
-        item: itemName || "item",
+  const [addSpending] = useMutation(ADD_SPENDING, {
+    refetchQueries: [
+      {
+        query: GET_SPENDINGS_BY_USERID,
+        variables: { userId: currentID },
       },
+    ],
+  }
+  );
+  const handleSubmit = async () => {
+    console.log("running");
+    await addSpending({
+      variables: {
+        amount: parseInt(amount),
+        timeSubmitted: currentDay,
+         purchaseDescription: itemName,
+        userId: currentID,
+       
+        
+        
+      }
     });
   };
   return (
@@ -49,7 +63,7 @@ function AddSpending({ currentID, current }) {
           ></input>
         </div>
       </div>
-      <button onClick={onSubmit} disabled={!current}>
+      <button onClick={handleSubmit} disabled={!currentDay}>
         {" "}
         submit
       </button>
