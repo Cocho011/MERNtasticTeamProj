@@ -31,8 +31,8 @@ const typeDefs = `
     # }
 
     type Query {
-        budgets: [Budget]
-        spendings: [Spending]
+        budgets(userId: String): [Budget]
+        spendings(userId: String): [Spending]
         users: [User]
         # referencing 21-mern -> 07-query-arguments:
         # user(userId: ID!): User
