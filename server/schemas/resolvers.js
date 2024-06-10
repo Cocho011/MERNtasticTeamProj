@@ -8,6 +8,14 @@ const { User, Budget, Spending } = require('../models');
 const resolvers = {
     Query: {
         budgets: async (parent, args, context) => {
+            if (args.userId) {
+                try {
+                    return await Budget.find({ userId: args.userId });
+                }
+                catch (error) {
+                    throw new Error('Failed to fetch budgets for ' + args.userId );
+                }
+            }
             // Testing to make sure static data works
             // try {
             //     const staticBudgets = [
@@ -27,6 +35,13 @@ const resolvers = {
             }
         },
         spendings: async (parent, args, context) => {
+             if (args.userId) {
+               try {
+                 return await Spending.find({ userId: args.userId });
+               } catch (error) {
+                 throw new Error("Failed to fetch budgets for " + args.userId);
+               }
+             }
             try {
                 const spending = await Spending.find({});
                 return spending;

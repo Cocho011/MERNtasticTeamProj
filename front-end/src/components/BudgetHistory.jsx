@@ -17,16 +17,19 @@ const StyledBudgetHistory = styled.div`
   }
 `;
 
-function BudgetHistory({ userHistory }) {
+function BudgetHistory({ budgetHistory, spendingHistory }) {
   const [viewAll, setViewAll] = useState(false);
-  const displayedHistory = viewAll ? userHistory : userHistory.slice(0, 3);
+  const displayedHistory = viewAll ? budgetHistory : budgetHistory.slice(0, 3);
+  console.log(budgetHistory)
 
   return (
     <StyledBudgetHistory className="budgetHistory">
       <h2>Budget History</h2>
       <div className="budgetHistoryContainer">
         {displayedHistory.map((week, index) => (
-          <WeekBudget key={index} weekData={week[1]} week={week[0]} />
+          <WeekBudget key={index} weekDate={week.weekDate} amount={week.amount} 
+            spendingHistory={spendingHistory}
+          />
         ))}
         {/* <WeekBudget weekData={userHistory[0][1]} week={userHistory[0][0]} /> */}
       </div>
@@ -41,19 +44,19 @@ function BudgetHistory({ userHistory }) {
   );
 }
 
-function WeekBudget({ weekData, week }) {
+function WeekBudget({ weekDate, amount, spendingHistory }) {
   const [showSpending, setShowSpending] = useState(false);
   // console.log(weekData);
   return (
     <div className="weekBudget" onClick={() => setShowSpending(!showSpending)}>
       <div className="weekBudgetContainer">
-        <h3 className="budgetHistoryDate">{week}</h3>
+        <h3 className="budgetHistoryDate">{weekDate}</h3>
         <div className="weekBudgetInfo">
-          <p>Budget: ${weekData.totalBudget}</p>
-          <p>Spent: ${weekData.spent}</p>
+          <p>Budget: ${amount}</p>
+          <p>Spent: ${"0"}</p>
         </div>
       </div>
-      {showSpending && <SpendingHistory weekSpending={weekData.spending} />}
+      {showSpending && <SpendingHistory weekSpending={spendingHistory} />}
     </div>
   );
 }

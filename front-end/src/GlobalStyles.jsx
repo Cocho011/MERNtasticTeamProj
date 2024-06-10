@@ -5,7 +5,7 @@ const GlobalStyles = () => (
       styles={css`
         body {
           margin: 0;
-          padding: 0;
+          padding: 7%;
           font-family: Arial, sans-serif;
           width:100%;
           box-sizing: border box;

@@ -1,31 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import { fetchUserData } from '../utils/api';
-import MainWeek from '../components/MainWeek';
-import AddNextWeekBudget from '../components/AddNextWeekBudget';
-import AddSpending from '../components/AddSpending';
-import BudgetHistory from '../components/BudgetHistory';
+import React, { useState, useEffect } from "react";
+import { fetchUserData } from "../utils/api";
+import MainWeek from "../components/MainWeek";
+import SpendingHistory from "../components/SpendingHistory";
+import AddNextWeekBudget from "../components/AddNextWeekBudget";
+import AddSpending from "../components/AddSpending";
+import BudgetHistory from "../components/BudgetHistory";
+import { useQuery } from "@apollo/client";
+import { GET_BUDGETS_BY_USERID, GET_SPENDINGS_BY_USERID } from "../queries";
+import styled from "@emotion/styled";
+
+const dummyUserID = "123";
+const dummyDay = "06/10/2024";
+const dummyNextWeek = "06/17/2024";
+
+const StyledDashboard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 7%;
+  align-items: center;
+`;
+
+const StyledCurrentWeek = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .currentWeekTop {
+    display: flex;
+    flex-direction: row;
+    > * {
+      flex: 1;
+    }
+  }
+  .spendingHistoryContainer {
+    .spendingHistoryTitle {
+      text-align: center;
+    }
+  }
+`;
 
 function DashboardPage() {
-  const [userData, setUserData] = useState(null);
+  const {
+    loading: loadingBudgets,
+    error: errorBudgets,
+    data: budgetsData,
+  } = useQuery(GET_BUDGETS_BY_USERID, {
+    variables: { userId: "123" },
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchUserData();
-      setUserData(data);
-    };
-    fetchData();
-  }, []);
+  const {
+    loading: loadingSpendings,
+    error: errorSpending,
+    data: spendingsData,
+  } = useQuery(GET_SPENDINGS_BY_USERID, {
+    variables: { userId: "123" },
+  });
+  // if (!loading) {console.log(data)}
 
-  if (!userData) return <div>Loading...</div>;
+  if (loadingBudgets || loadingSpendings) return <div>Loading...</div>;
+  if (!loadingBudgets) {
+    console.log(budgetsData);
+  }
+  if (!loadingSpendings) {
+    console.log(spendingsData);
+  }
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <MainWeek current={userData.currentWeek} weekData={userData.weekData} />
-      <AddNextWeekBudget currentID={userData.id} nextWeekDate={userData.nextWeekDate} />
-      <AddSpending currentID={userData.id} current={userData.currentWeek} />
-      <BudgetHistory userHistory={userData.history} />
-    </div>
+    <StyledDashboard>
+      <h2>
+        Current Week (
+        {budgetsData ? budgetsData.budgets[0].weekDate : "loading..."})
+      </h2>
+      <StyledCurrentWeek className="currentWeekWrapper">
+        <div className="currentWeekTop">
+          <MainWeek
+            current={budgetsData.budgets[0].weekDate}
+            budgetData={budgetsData.budgets[0]}
+            spendingData={spendingsData.spendings}
+          />
+          <div className="spendingHistoryContainer">
+            <h3 className="spendingHistoryTitle">Spending History</h3>
+            <SpendingHistory
+              weekSpending={spendingsData ? spendingsData.spendings : null}
+            />
+          </div>
+        </div>
+        <AddSpending currentID={dummyUserID} currentDay={dummyDay} />
+      </StyledCurrentWeek>
+      <AddNextWeekBudget currentID={dummyUserID} nextWeekDate={dummyNextWeek} />
+      {budgetsData && spendingsData && (
+        <BudgetHistory budgetHistory={budgetsData.budgets.slice(1)} 
+        spendingHistory={spendingsData.spendings}
+        />
+        
+      )}
+    </StyledDashboard>
   );
 }
 

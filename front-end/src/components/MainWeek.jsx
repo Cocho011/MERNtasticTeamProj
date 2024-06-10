@@ -17,12 +17,12 @@ const StyledMainWeek = styled.div`
   }
 `;
 
-function MainWeek({ current, weekData }) {
+function MainWeek({ current, budgetData}) {
   return (
     <StyledMainWeek className="mainWeek">
       <CurrentBudget
-        totalBudget={weekData ? weekData.totalBudget : 0}
-        spent={weekData ? weekData.spent : 0}
+        totalBudget={ budgetData.amount ? budgetData.amount : 0}
+        spent={budgetData.spent ? budgetData.spent : 0}
       />
     </StyledMainWeek>
   );
@@ -32,7 +32,7 @@ function CurrentBudget({ totalBudget, spent }) {
   return (
     <div className="currentBudget">
       <CurrentBudgetRow
-        amount={spent === 0 ? spent - totalBudget : 0}
+        amount={spent === 0 ? totalBudget - spent : 0}
         title="Remaining"
       />
       <CurrentBudgetRow amount={spent} title="Spent" />
