@@ -9,6 +9,9 @@ import { useQuery } from "@apollo/client";
 import { GET_BUDGETS_BY_USERID, GET_SPENDINGS_BY_USERID } from "../queries";
 import styled from "@emotion/styled";
 
+const dummyUserID = "123";
+const dummyDay = "06/10/2024"
+
 const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
@@ -83,7 +86,7 @@ function DashboardPage() {
                 />
           </div>
         </div>
-        {/* <AddSpending currentID={dummyUserID} current={current} /> */}
+        <AddSpending currentID={dummyUserID} currentDay={dummyDay} />
       </StyledCurrentWeek>
       {/* <AddNextWeekBudget currentID={dummyUserID} nextWeekDate={nextWeek} /> */}
       {/* {userHistory && ( */}

@@ -18,3 +18,13 @@ query getSpendingsByUserId($userId: String!) {
   }
 }
 `;
+export const ADD_SPENDING = gql`
+mutation addSpending($amount: Int!, $timeSubmitted: String!, $purchaseDescription: String!, $userId: String!) {
+  addSpending(amount: $amount, timeSubmitted: $timeSubmitted, purchaseDescription: $purchaseDescription, userId: $userId) {
+    _id
+    amount
+    timeSubmitted
+    purchaseDescription
+  }
+}
+`;
