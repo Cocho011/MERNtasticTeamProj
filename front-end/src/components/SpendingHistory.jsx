@@ -6,7 +6,7 @@ const StyledSpendingHistory = styled.div`
   flex-direction: column;
   .spendingHistoryRow {
     display: grid;
-    grid-template-columns: 2fr 1fr 4fr;
+    grid-template-columns: 2fr 2fr 3fr;
     flex: 1;
     gap: 30px;
   }
